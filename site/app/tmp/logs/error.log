@@ -1,0 +1,126 @@
+2014-10-25 13:50:03 Error: [MissingTableException] Table users for model User was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'users',
+  'class' => 'User',
+  'ds' => 'default',
+)
+Request URL: /users/login
+Stack Trace:
+#0 /srv/application/lib/Cake/Model/Model.php(3551): Model->setSource('users')
+#1 /srv/application/lib/Cake/Model/Model.php(1369): Model->getDataSource()
+#2 /srv/application/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#3 /srv/application/lib/Cake/View/Helper/FormHelper.php(468): FormHelper->_introspectModel('User', 'fields')
+#4 /srv/application/app/View/Users/login.ctp(5): FormHelper->create('User')
+#5 /srv/application/lib/Cake/View/View.php(948): include('/srv/applicatio...')
+#6 /srv/application/lib/Cake/View/View.php(910): View->_evaluate('/srv/applicatio...', Array)
+#7 /srv/application/lib/Cake/View/View.php(471): View->_render('/srv/applicatio...')
+#8 /srv/application/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#9 /srv/application/lib/Cake/Routing/Dispatcher.php(198): Controller->render()
+#10 /srv/application/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-10-25 13:52:19 Error: [MissingViewException] View file "/srv/application/app/View/Users/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/srv/application/app/View/Users/index.ctp',
+)
+Request URL: /users
+Stack Trace:
+#0 /srv/application/lib/Cake/View/View.php(468): View->_getViewFileName(NULL)
+#1 /srv/application/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /srv/application/lib/Cake/Routing/Dispatcher.php(198): Controller->render()
+#3 /srv/application/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-10-25 16:02:43 Error: [MissingControllerException] Controller class GovernatesController could not be found.
+Exception Attributes: array (
+  'class' => 'GovernatesController',
+  'plugin' => NULL,
+)
+Request URL: /governates/add
+Stack Trace:
+#0 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-10-25 16:18:41 Error: [MissingViewException] View file "/srv/application/app/View/Services/search.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/srv/application/app/View/Services/search.ctp',
+)
+Request URL: /
+Stack Trace:
+#0 /srv/application/lib/Cake/View/View.php(468): View->_getViewFileName(NULL)
+#1 /srv/application/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#2 /srv/application/lib/Cake/Routing/Dispatcher.php(198): Controller->render()
+#3 /srv/application/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(ServicesController), Object(CakeRequest))
+#4 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-10-25 16:47:06 Error: Fatal Error (4): syntax error, unexpected '[' in [/srv/application/app/Model/Service.php, line 77]
+2014-10-25 16:47:06 Error: [FatalErrorException] syntax error, unexpected '['
+Request URL: /
+Stack Trace:
+#0 /srv/application/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/srv/applicatio...', 77)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/srv/applicatio...', 77, Array)
+#2 /srv/application/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/srv/applicatio...', 77, Array)
+#3 /srv/application/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-10-25 16:47:42 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'district_id' in where clause is ambiguous
+Request URL: /
+Stack Trace:
+#0 /srv/application/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /srv/application/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Service...', Array)
+#2 /srv/application/lib/Cake/Model/Datasource/DboSource.php(666): DboSource->execute('SELECT `Service...', Array, Array)
+#3 /srv/application/lib/Cake/Model/Datasource/DboSource.php(1106): DboSource->fetchAll('SELECT `Service...', false)
+#4 /srv/application/lib/Cake/Model/Model.php(2947): DboSource->read(Object(Service), Array)
+#5 /srv/application/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#6 /srv/application/app/Model/Service.php(100): Model->find('all', Array)
+#7 /srv/application/app/Controller/ServicesController.php(31): Service->search('1', '1', '1', '1', '1')
+#8 [internal function]: ServicesController->search()
+#9 /srv/application/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(ServicesController), Array)
+#10 /srv/application/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 /srv/application/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(ServicesController), Object(CakeRequest))
+#12 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-10-25 16:48:45 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'district_id' in where clause is ambiguous
+Request URL: /
+Stack Trace:
+#0 /srv/application/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /srv/application/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Service...', Array)
+#2 /srv/application/lib/Cake/Model/Datasource/DboSource.php(666): DboSource->execute('SELECT `Service...', Array, Array)
+#3 /srv/application/lib/Cake/Model/Datasource/DboSource.php(1106): DboSource->fetchAll('SELECT `Service...', false)
+#4 /srv/application/lib/Cake/Model/Model.php(2947): DboSource->read(Object(Service), Array)
+#5 /srv/application/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#6 /srv/application/app/Model/Service.php(100): Model->find('all', Array)
+#7 /srv/application/app/Controller/ServicesController.php(31): Service->search('1', '1', '1', '1', '1')
+#8 [internal function]: ServicesController->search()
+#9 /srv/application/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(ServicesController), Array)
+#10 /srv/application/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 /srv/application/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(ServicesController), Object(CakeRequest))
+#12 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-10-25 16:49:23 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Service.criterium_id' in 'where clause'
+Request URL: /
+Stack Trace:
+#0 /srv/application/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /srv/application/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Service...', Array)
+#2 /srv/application/lib/Cake/Model/Datasource/DboSource.php(666): DboSource->execute('SELECT `Service...', Array, Array)
+#3 /srv/application/lib/Cake/Model/Datasource/DboSource.php(1106): DboSource->fetchAll('SELECT `Service...', false)
+#4 /srv/application/lib/Cake/Model/Model.php(2947): DboSource->read(Object(Service), Array)
+#5 /srv/application/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#6 /srv/application/app/Model/Service.php(100): Model->find('all', Array)
+#7 /srv/application/app/Controller/ServicesController.php(31): Service->search('1', '1', '1', '1', '1')
+#8 [internal function]: ServicesController->search()
+#9 /srv/application/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(ServicesController), Array)
+#10 /srv/application/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 /srv/application/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(ServicesController), Object(CakeRequest))
+#12 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-10-25 17:06:30 Error: [MissingActionException] Action ServicesController::get() could not be found.
+Exception Attributes: array (
+  'controller' => 'ServicesController',
+  'action' => 'get',
+)
+Request URL: /services/get
+Stack Trace:
+#0 /srv/application/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/application/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(ServicesController), Object(CakeRequest))
+#2 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
