@@ -975,3 +975,12 @@ Request URL: /promise/promise/assets/img/location-pin.png
 Stack Trace:
 #0 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-11-02 15:54:25 Error: [MissingControllerException] Controller class PromiseController could not be found.
+Exception Attributes: array (
+  'class' => 'PromiseController',
+  'plugin' => NULL,
+)
+Request URL: /promise/promise/assets/img/location-pin.png
+Stack Trace:
+#0 /srv/application/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
