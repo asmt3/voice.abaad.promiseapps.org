@@ -1,11 +1,28 @@
 <div class="services view">
-<h2><?php echo __('Service'); ?></h2>
-	<dl>
+<h2><?php echo h($service['Service']['name']); ?></h2>
+<?php echo $this->Html->link(__('Edit Service'), array('action' => 'edit', $service['Service']['id']), array('class' => 'btn btn-default')); ?>
+	<dl class="dl-horizontal">
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($service['Service']['id']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Name'); ?></dt>
+		<dd>
+			<?php echo h($service['Service']['name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Description Short'); ?></dt>
+		<dd>
+			<?php echo h($service['Service']['description_short']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Description Long'); ?></dt>
+		<dd>
+			<?php echo h($service['Service']['description_long']); ?>
+			&nbsp;
+		</dd>
+
 		<dt><?php echo __('Sector'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($service['Sector']['name'], array('controller' => 'sectors', 'action' => 'view', $service['Sector']['id'])); ?>
@@ -26,21 +43,7 @@
 			<?php echo $this->Html->link($service['Village']['name'], array('controller' => 'villages', 'action' => 'view', $service['Village']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($service['Service']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Description Short'); ?></dt>
-		<dd>
-			<?php echo h($service['Service']['description_short']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Description Long'); ?></dt>
-		<dd>
-			<?php echo h($service['Service']['description_long']); ?>
-			&nbsp;
-		</dd>
+
 		<dt><?php echo __('Phone'); ?></dt>
 		<dd>
 			<?php echo h($service['Service']['phone']); ?>
@@ -62,6 +65,40 @@
 			&nbsp;
 		</dd>
 	</dl>
+
+	<h3>Give feedback</h3>
+	<form class="form-horizontal">
+	<textarea class="form-control" rows="3" style="width:100%"></textarea>
+	<input type="submit" value="Post comment" class="btn">
+	<ul>
+		<li>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit.
+			</p> 
+			<div class="authour">by Roula</div>
+		</li>
+
+		<li>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit.
+			</p> 
+			<div class="authour">by Roula</div>
+		</li>
+
+		<li>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit.
+			</p> 
+			<div class="authour">by Roula</div>
+		</li>
+	</ul>
+	</form>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
@@ -78,9 +115,46 @@
 		<li><?php echo $this->Html->link(__('New District'), array('controller' => 'districts', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Villages'), array('controller' => 'villages', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Village'), array('controller' => 'villages', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Comments'), array('controller' => 'comments', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Comment'), array('controller' => 'comments', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Criteria'), array('controller' => 'criteria', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Criterium'), array('controller' => 'criteria', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+<div class="related">
+	<h3><?php echo __('Related Comments'); ?></h3>
+	<?php if (!empty($service['Comment'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('User Id'); ?></th>
+		<th><?php echo __('Service Id'); ?></th>
+		<th><?php echo __('Content'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th class="actions"><?php echo __('Actions'); ?></th>
+	</tr>
+	<?php foreach ($service['Comment'] as $comment): ?>
+		<tr>
+			<td><?php echo $comment['id']; ?></td>
+			<td><?php echo $comment['user_id']; ?></td>
+			<td><?php echo $comment['service_id']; ?></td>
+			<td><?php echo $comment['content']; ?></td>
+			<td><?php echo $comment['created']; ?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('controller' => 'comments', 'action' => 'view', $comment['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'comments', 'action' => 'edit', $comment['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'comments', 'action' => 'delete', $comment['id']), array(), __('Are you sure you want to delete # %s?', $comment['id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Comment'), array('controller' => 'comments', 'action' => 'add')); ?> </li>
+		</ul>
+	</div>
 </div>
 <div class="related">
 	<h3><?php echo __('Related Criteria'); ?></h3>

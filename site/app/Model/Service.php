@@ -7,6 +7,7 @@ App::uses('AppModel', 'Model');
  * @property Governate $Governate
  * @property District $District
  * @property Village $Village
+ * @property Comment $Comment
  * @property Criterium $Criterium
  */
 class Service extends AppModel {
@@ -51,6 +52,28 @@ class Service extends AppModel {
 	);
 
 /**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Comment' => array(
+			'className' => 'Comment',
+			'foreignKey' => 'service_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
+
+/**
  * hasAndBelongsToMany associations
  *
  * @var array
@@ -71,7 +94,7 @@ class Service extends AppModel {
 		)
 	);
 
-
+	
 	public function search($name, $village_id, $district_id, $governate_id, $sector_id, $criterium_id) {
 
 		$conditions = array();

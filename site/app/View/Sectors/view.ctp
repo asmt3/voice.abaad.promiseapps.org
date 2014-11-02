@@ -34,7 +34,7 @@
 		<th><?php echo __('Governate Id'); ?></th>
 		<th><?php echo __('District Id'); ?></th>
 		<th><?php echo __('Village Id'); ?></th>
-		<th><?php echo __('Title'); ?></th>
+		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Description Short'); ?></th>
 		<th><?php echo __('Description Long'); ?></th>
 		<th><?php echo __('Phone'); ?></th>
@@ -50,7 +50,7 @@
 			<td><?php echo $service['governate_id']; ?></td>
 			<td><?php echo $service['district_id']; ?></td>
 			<td><?php echo $service['village_id']; ?></td>
-			<td><?php echo $service['title']; ?></td>
+			<td><?php echo $service['name']; ?></td>
 			<td><?php echo $service['description_short']; ?></td>
 			<td><?php echo $service['description_long']; ?></td>
 			<td><?php echo $service['phone']; ?></td>

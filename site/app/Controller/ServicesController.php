@@ -15,6 +15,10 @@ class ServicesController extends AppController {
  */
 	public $components = array('Paginator');
 
+	public function beforeFilter() {
+        $this->Auth->allow('search');
+    }
+
 
 	public function search() {
 
@@ -43,7 +47,6 @@ class ServicesController extends AppController {
 		
 		$this->set(compact('governates', 'districts', 'villages', 'sectors', 'criteria'));
 	}
-
 
 /**
  * index method

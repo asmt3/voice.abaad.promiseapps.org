@@ -1,8 +1,25 @@
 
+<div class="filter">
+	<h3><?php echo __('Filter Services'); ?></h3>
+	<?php echo $this->Form->create('Service'); ?>
+	<fieldset>
+	<?php
+		echo $this->Form->input('name', array('placeholder' => 'Search by name'));
+		echo $this->Form->input('sector_id', array('empty' => '(choose)'));
+		echo $this->Form->input('governate_id', array('empty' => '(choose)'));
+		echo $this->Form->input('district_id', array('empty' => '(choose)'));
+		echo $this->Form->input('village_id', array('empty' => '(choose)'));
+		echo $this->Form->input('criterium_id', array('empty' => '(choose)'));
+	?>
+	</fieldset>
+<?php echo $this->Form->end(array(
+	'label' => 'Filter',
+	'class' => 'btn btn-default'
+)); ?>
+</div>
 
 
-
-<div class="services index">
+<div class="services results">
 	
 
 
@@ -10,7 +27,7 @@
 <h2><?php echo __('Services Found'); ?></h2>
 <? if (count($services)): ?>
 
-	<table cellpadding="0" cellspacing="0">
+	<table cellpadding="0" cellspacing="0" class="table table-striped">
 	<thead>
 	<tr>
 		<th>Name</th>
@@ -58,22 +75,4 @@
 
 
 </div>
-
-<div class="actions">
-	<h3><?php echo __('Filter Services'); ?></h3>
-	<?php echo $this->Form->create('Service'); ?>
-	<fieldset>
-	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('sector_id');
-		echo $this->Form->input('governate_id');
-		echo $this->Form->input('district_id');
-		echo $this->Form->input('village_id');
-		echo $this->Form->input('criterium_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Filter')); ?>
-</div>
-
-
 

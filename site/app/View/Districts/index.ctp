@@ -1,6 +1,6 @@
 <div class="districts index">
 	<h2><?php echo __('Districts'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table class="table table-striped" cellpadding="0" cellspacing="0" class="table table-striped">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>

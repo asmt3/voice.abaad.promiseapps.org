@@ -9,24 +9,36 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'loginRedirect' => array(
-                'controller' => 'posts',
+                'controller' => 'services',
                 'action' => 'index'
             ),
-            'logoutRedirect' => array(
-                'controller' => 'pages',
-                'action' => 'display',
-                'home'
-            ),
+            'logoutRedirect' => '/',
             'authenticate' => array(
                 'Form' => array(
                     'passwordHasher' => 'Blowfish'
+                )
+            ),
+            'flash' => array(
+                'element' => 'alert',
+                'key' => 'auth',
+                'params' => array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-error'
                 )
             )
         )
     );
 
-    public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
-    }
-    //...
+    public $layout = 'Bootstrap2';
+
+    public $helpers = array(
+        'Session',
+        'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+        'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+        'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+    );
+
+
+    
+    
 }

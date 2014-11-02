@@ -25,6 +25,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php echo $cakeDescription ?>:
 		<?php echo $this->fetch('title'); ?>
 	</title>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 	<?php
 		echo $this->Html->meta('icon');
 
@@ -34,13 +37,30 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+
 	?>
 </head>
-<body>
+<body id="<?php echo $this->params['controller']; ?>-<?php echo $this->params['action']; ?>">
 	<div id="container">
 		<div id="header">
 			<h1><?php echo $this->Html->link($cakeDescription, '/'); ?></h1>
 		</div>
+		<nav>
+			<ul>
+<?php if (AuthComponent::user()): ?>
+	
+				<li>
+					<a href="/users/logout">Logout</a>
+				</li>
+<?php else: // (AuthComponent::user()): ?>
+				<li>
+					<a href="/users/login">Login</a>
+				</li>
+<?php endif; // (AuthComponent::user()): ?>
+
+
+			</ul>
+		</nav>
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
@@ -48,15 +68,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-				);
-			?>
-			<p>
-				<?php echo $cakeVersion; ?>
-			</p>
+			
+			
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>

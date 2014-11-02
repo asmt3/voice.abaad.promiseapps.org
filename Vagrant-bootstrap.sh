@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-apt-get update
-
 # so that php 5.4 gets installed
 # sudo apt-get install -y python-software-properties
 sudo apt-get update
@@ -9,7 +7,7 @@ sudo apt-get update
 # sudo apt-get update
 
 # LAMP
-apt-get install -y apache2
+sudo apt-get install -y apache2
 sudo a2enmod rewrite
 sudo apt-get install -y php5 libapache2-mod-php5 php5-mcrypt php5-curl php5-mysql
 
