@@ -75,14 +75,20 @@ class DATABASE_CONFIG {
 		//'encoding' => 'utf8',
 	);
 
-	public $test = array(
+	public $live = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'test_database_name',
+		'host' => 'promise.c77woinnngss.eu-west-1.rds.amazonaws.com',
+		'login' => 'promise',
+		'password' => 'Superman0',
+		'database' => 'abaad_voice',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
+
+	function __construct() {
+		if ($_SERVER['LIVE']) {
+			$this->default = $this->live;
+		}
+	}
 }
