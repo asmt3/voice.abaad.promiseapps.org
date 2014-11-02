@@ -29,7 +29,7 @@ class AppController extends Controller {
         )
     );
 
-    public $layout = 'Bootstrap2';
+    public $layout = 'bootstrap2';
 
     public $helpers = array(
         'Session',
