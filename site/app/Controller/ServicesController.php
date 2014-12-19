@@ -16,36 +16,40 @@ class ServicesController extends AppController {
 	public $components = array('Paginator');
 
 	public function beforeFilter() {
-        $this->Auth->allow('search');
+        $this->Auth->allow('search', 'view');
     }
 
 
 	public function search() {
 
+		
 
+		$name = $this->request->query('name');
+		$village_id = $this->request->query('village_id');
+		$district_id = $this->request->query('district_id');
+		$governate_id = $this->request->query('governate_id');
+		$sector_id = $this->request->query('sector_id');
+		$criterium_id = $this->request->query('criterium_id');
+		$this->set(compact('village_id', 'district_id', 'governate_id', 'sector_id', 'criterium_id'));
 
-		if ($this->request->is('post')) {
-			$name = $this->request->data('Service.name');
-			$village_id = $this->request->data('Service.village_id');
-			$district_id = $this->request->data('Service.district_id');
-			$governate_id = $this->request->data('Service.governate_id');
-			$sector_id = $this->request->data('Service.sector_id');
-			$criterium_id = $this->request->data('Service.criterium_id');
-
-
+		if ($this->request->query('action') == 'search') {
+			
 			$services = $this->Service->search($name, $village_id, $district_id, $governate_id, $sector_id, $criterium_id);
 
 			$this->set(compact('services'));
 		}
 
-		$governates = $this->Service->Governate->find('list');
-		$districts = $this->Service->District->find('list');
-		$villages = $this->Service->Village->find('list');
+
+		// $governates = $this->Service->Governate->find('list');
+		// $districts = $this->Service->District->find('list');
+		// $villages = $this->Service->Village->find('list');
 		$sectors = $this->Service->Sector->find('list');
 		$criteria = $this->Service->Criterium->find('list');
+		$governate_tree = $this->Service->Governate->getRegionTree();
 
 		
-		$this->set(compact('governates', 'districts', 'villages', 'sectors', 'criteria'));
+		$this->set(compact('governate_tree', 'sectors', 'criteria'));
+		// 'governates', 'districts', 'villages',
 	}
 
 /**

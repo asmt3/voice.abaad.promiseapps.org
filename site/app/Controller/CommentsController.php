@@ -15,6 +15,14 @@ class CommentsController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+	public function beforeFilter() {
+        $this->Auth->allow('add');
+    }
+
+
+
+
 /**
  * index method
  *
@@ -50,7 +58,7 @@ class CommentsController extends AppController {
 			$this->Comment->create();
 			if ($this->Comment->save($this->request->data)) {
 				$this->Session->setFlash(__('The comment has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect($this->referer());
 			} else {
 				$this->Session->setFlash(__('The comment could not be saved. Please, try again.'));
 			}

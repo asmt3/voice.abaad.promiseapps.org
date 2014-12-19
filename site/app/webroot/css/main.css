@@ -1,4 +1,6 @@
-div.actions {display: none;}
+div.actions {
+	/*display: none;*/
+}
 div.related {display: none;}
 div.view {float:none; width:auto; border:none;}
 body#services-search div.filter {display:block; float: left; width:30%;}
@@ -7,3 +9,10 @@ nav {float:right;}
 nav ul {list-style: none; margin:0; padding:0;}
 nav ul li {margin:0; padding:0;}
 nav ul li a {color:#fff;}
+
+
+.edit-btn {float:right;}
+
+#CommentContent {width:90%;}
+ul.comments {list-style:none;}
+ul.comments li {padding:1em; background:#eee; margin:1em;}

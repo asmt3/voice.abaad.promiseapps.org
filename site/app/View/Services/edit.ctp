@@ -23,7 +23,7 @@
 	'class' => 'btn btn-default'
 )); ?>
 </div>
-<div class="actions">
+<div class="actions" style="display:none">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 

@@ -52,7 +52,7 @@ class District extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
+			'order' => array('Village.name'),
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',

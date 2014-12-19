@@ -24,6 +24,7 @@ class Governate extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
+			'order' => array('District.name'),
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
@@ -44,5 +45,50 @@ class Governate extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
+	function getRegionTree() {
+		$tree = $this->find('all', array(
+			'contain' => array('District.Village'),
+			'order' => array('Governate.name'),
+		));
+
+		// re-index on ids
+		$governates_indexed = array();
+
+		foreach ($tree as $governate) {
+
+			$districts_indexed = array();
+			foreach ($governate['District'] as $district) {
+
+				$villages_indexed = array();
+				foreach ($district['Village'] as $village) {
+					$villages_indexed[$village['id']] = $village;
+				}
+
+
+				unset($district['Village']);
+				$districts_indexed[$district['id']] = array(
+					'district' => $district,
+					'villages' => $villages_indexed,
+				);
+			}
+
+			$governates_indexed[$governate['Governate']['id']] = array(
+				'governate' => $governate['Governate'],
+				'districts' => $districts_indexed,
+			);
+		}
+
+
+		return $governates_indexed;
+
+	}
+
+
+
+
+
+
+
 
 }

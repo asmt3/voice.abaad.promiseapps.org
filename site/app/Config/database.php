@@ -87,7 +87,7 @@ class DATABASE_CONFIG {
 	);
 
 	function __construct() {
-		if ($_SERVER['LIVE']) {
+		if (isset($_SERVER['LIVE'])) {
 			$this->default = $this->live;
 		}
 	}

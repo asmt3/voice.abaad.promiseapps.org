@@ -1,12 +1,13 @@
 <div class="services view">
 <h2><?php echo h($service['Service']['name']); ?></h2>
+<div class="edit-btn">
+	<?php if(AuthComponent::user()): ?>
 <?php echo $this->Html->link(__('Edit Service'), array('action' => 'edit', $service['Service']['id']), array('class' => 'btn btn-default')); ?>
+<?php endif; //(AuthComponent::user()): ?>
+
+</div>
 	<dl class="dl-horizontal">
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($service['Service']['id']); ?>
-			&nbsp;
-		</dd>
+		
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
 			<?php echo h($service['Service']['name']); ?>
@@ -25,22 +26,25 @@
 
 		<dt><?php echo __('Sector'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($service['Sector']['name'], array('controller' => 'sectors', 'action' => 'view', $service['Sector']['id'])); ?>
+			<?php echo h($service['Sector']['name']); ?>
 			&nbsp;
 		</dd>
+
 		<dt><?php echo __('Governate'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($service['Governate']['name'], array('controller' => 'governates', 'action' => 'view', $service['Governate']['id'])); ?>
+			<?php echo h($service['Governate']['name']); ?>
 			&nbsp;
 		</dd>
+
 		<dt><?php echo __('District'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($service['District']['name'], array('controller' => 'districts', 'action' => 'view', $service['District']['id'])); ?>
+			<?php echo h($service['District']['name']); ?>
 			&nbsp;
 		</dd>
+
 		<dt><?php echo __('Village'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($service['Village']['name'], array('controller' => 'villages', 'action' => 'view', $service['Village']['id'])); ?>
+			<?php echo h($service['Village']['name']); ?>
 			&nbsp;
 		</dd>
 
@@ -66,41 +70,42 @@
 		</dd>
 	</dl>
 
-	<h3>Give feedback</h3>
-	<form class="form-horizontal">
-	<textarea class="form-control" rows="3" style="width:100%"></textarea>
-	<input type="submit" value="Post comment" class="btn">
-	<ul>
-		<li>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit.
-			</p> 
-			<div class="authour">by Roula</div>
-		</li>
+	<h3>Give feedback on this service</h3>
 
-		<li>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit.
-			</p> 
-			<div class="authour">by Roula</div>
-		</li>
 
-		<li>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit.
-			</p> 
-			<div class="authour">by Roula</div>
-		</li>
-	</ul>
-	</form>
+<ul class="comments">
+<?php foreach($service['Comment'] as $comment): ?>
+
+	<li>
+			<p><? echo h($comment['content']) ?></p> 
+	</li>
+
+<?php endforeach; //($service['Comment'] as $comment): ?>
+</ul>
+
+
+
+	<?php echo $this->Form->create('Comment', array(
+		'action' => 'add',
+		'class' => 'form-horizontal'
+	)); ?>
+
+
+	<?php echo $this->Form->input('service_id', array(
+		'type' => 'hidden',
+		'value' => $service['Service']['id']
+	)); ?>
+	<?php echo $this->Form->input('content', array('label' => false)); ?>
+
+	<?php echo $this->Form->end(array(
+		'label' => 'Post comment',
+		'class' => 'btn btn-default'
+	)); ?>
+
+	
+
 </div>
-<div class="actions">
+<div class="actions" style="display:none">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Service'), array('action' => 'edit', $service['Service']['id'])); ?> </li>
